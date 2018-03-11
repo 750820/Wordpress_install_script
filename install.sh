@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
- 
+
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='coderslab'
 HOSTNAME='student.edu'
@@ -9,22 +9,22 @@ sudo apt-mark hold grub*
 
 #add ppa for phpmyadmin
 sudo add-apt-repository -y ppa:nijel/phpmyadmin
- 
+
 # update / upgrade
 sudo apt-get update
 sudo apt-get -y upgrade
- 
+
 #install all used tools
 sudo apt-get install -y curl vim git
- 
+
 #install apache2
 sudo apt-get install -y apache2
- 
+
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
 sudo apt-get install -y mysql-server
- 
+
 #install php7 and libs
 sudo apt-get install -y php7.0 php7.0-mysql php7.0-curl php7.0-gd php7.0-json php7.0-cgi php7.0-cli php7.0-soap
 sudo apt-get install -y libapache2-mod-php7.0
@@ -67,10 +67,11 @@ sudo service apache2 reload
 # install Composer
 sudo curl -s https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
- 
-#install symfony2
-sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-sudo chmod a+x /usr/local/bin/symfony
+
+#install wp-cli
+sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+sudo chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
 
 # setup hosts file
 VHOST=$(cat <<EOF

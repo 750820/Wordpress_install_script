@@ -240,10 +240,11 @@ sudo curl -s https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
 echo
-echo "Instaluję Symfony..."
-#install symfony2
-sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-sudo chmod a+x /usr/local/bin/symfony
+echo "Instaluję WP-CLI ..."
+#install wp-cli
+sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+sudo chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
 
 echo
 echo "Aktualizuję paczki homebrew..."
